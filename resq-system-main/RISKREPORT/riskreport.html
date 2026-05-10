@@ -1,0 +1,305 @@
+<!-- RISKREPORT/riskreport.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="resq-api-base" content="">
+    <title>ResQ Admin | Risk Report</title>
+
+    <link rel="stylesheet" href="riskreport.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <div class="scoped-banner">
+        <i data-lucide="lock" size="10"></i>
+        SCOPED VIEW: MUNICIPALITY OF MAMBURAO
+    </div>
+
+    <!-- NAVIGATION -->
+
+    <header class="top-nav">
+
+        <div class="nav-left">
+
+            <div class="logo-box">
+                <i data-lucide="shield-alert" size="16"></i>
+            </div>
+
+            <span class="brand">ResQ Admin</span>
+
+            <nav class="nav-links">
+                <a href="../DASHBOARD/dashboard.html">Dashboard</a>
+                <a href="../REPORTS/reports.html">Reports</a>
+                <a href="riskreport.html" class="active">Risk Report</a>
+                <a href="../NEWS/news.html">News</a>
+                <a href="../USERVER/user.html">Users</a>
+                <a href="../SETTINGS/settings.html">Settings</a>
+            </nav>
+
+        </div>
+
+        <div class="nav-right">
+
+            <button class="btn-workspace"
+                    type="button"
+                    onclick="location.href='../WORKSPACE/workspace.html'">
+
+                <i data-lucide="map-pin" size="14"></i>
+                Mamburao
+
+            </button>
+
+            <button class="icon-btn"
+                    type="button"
+                    onclick="location.reload()">
+
+                <i data-lucide="refresh-cw" size="16"></i>
+
+            </button>
+
+            <button class="icon-btn"
+                    type="button"
+                    data-action="logout">
+
+                <i data-lucide="log-out" size="16"></i>
+
+            </button>
+
+            <img src="https://ui-avatars.com/api/?name=Admin&background=FF8C00&color=fff"
+                 alt="Admin Avatar"
+                 class="avatar">
+
+        </div>
+
+    </header>
+
+    <!-- MAIN -->
+
+    <main class="risk-main">
+
+        <!-- HEADER -->
+
+        <section class="page-header">
+
+            <div>
+
+                <h1>Barangay Risk Assessment</h1>
+
+                <p>
+                    ML-based disaster risk analysis, weather prediction,
+                    and emergency assessment monitoring for Mamburao.
+                </p>
+
+            </div>
+
+            <div class="header-actions">
+
+                <button class="btn-primary"
+                        type="button"
+                        id="refreshBtn">
+
+                    <i data-lucide="refresh-cw" size="14"></i>
+                    Refresh
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- SUMMARY -->
+
+        <section class="summary-grid">
+
+            <article class="summary-card">
+                <span>Total Assessments</span>
+                <strong id="totalAssessments">0</strong>
+            </article>
+
+            <article class="summary-card">
+                <span>High Risk Barangays</span>
+                <strong id="highRiskCount">0</strong>
+            </article>
+
+            <article class="summary-card">
+                <span>Moderate Risk Areas</span>
+                <strong id="moderateRiskCount">0</strong>
+            </article>
+
+            <article class="summary-card">
+                <span>Safe Barangays</span>
+                <strong id="safeCount">0</strong>
+            </article>
+
+        </section>
+
+        <!-- TOOLBAR -->
+
+        <section class="toolbar">
+
+            <select id="barangaySelect">
+
+                <option value="">Select Barangay</option>
+
+                <option value="Poblacion">Poblacion</option>
+                <option value="Fatima">Fatima</option>
+                <option value="Tawiran">Tawiran</option>
+                <option value="Payompon">Payompon</option>
+
+            </select>
+
+            <button class="btn-primary"
+                    id="generateRiskBtn">
+
+                <i data-lucide="shield-alert" size="14"></i>
+                Get Risk Report
+
+            </button>
+
+            <button class="btn-secondary"
+                    id="openSimulationBtn">
+
+                <i data-lucide="flask-conical" size="14"></i>
+                Disaster Simulation
+
+            </button>
+
+            <button class="btn-secondary"
+                    id="loadHistoryBtn">
+
+                <i data-lucide="history" size="14"></i>
+                View History
+
+            </button>
+
+        </section>
+
+        <!-- MAIN GRID -->
+
+        <section class="risk-grid">
+
+            <!-- LEFT -->
+
+            <aside class="risk-sidebar">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h3>Recent Risk Assessments</h3>
+                    </div>
+
+                    <div id="historyContainer"
+                         class="history-list">
+
+                        <div class="empty-state">
+                            No assessments yet
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card simulation-card">
+
+                    <div class="card-header">
+                        <h3>Disaster Simulation</h3>
+                    </div>
+
+                    <div class="simulation-form">
+
+                        <label>
+                            Barangay
+                            <input type="text"
+                                   id="simBarangay"
+                                   placeholder="Barangay name">
+                        </label>
+
+                        <label>
+                            Disaster Type
+
+                            <select id="simDisasterType">
+
+                                <option>Flood</option>
+                                <option>Typhoon</option>
+                                <option>Landslide</option>
+                                <option>Earthquake</option>
+                                <option>Storm Surge</option>
+
+                            </select>
+
+                        </label>
+
+                        <label>
+                            Rainfall (mm)
+                            <input type="number" id="simRainfall">
+                        </label>
+
+                        <label>
+                            Humidity (%)
+                            <input type="number" id="simHumidity">
+                        </label>
+
+                        <label>
+                            Wind Speed (km/h)
+                            <input type="number" id="simWind">
+                        </label>
+
+                        <label>
+                            Temperature (°C)
+                            <input type="number" id="simTemp">
+                        </label>
+
+                        <button class="btn-primary"
+                                id="runSimulationBtn">
+
+                            <i data-lucide="play" size="14"></i>
+                            Run Simulation
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+            <!-- RIGHT -->
+
+            <section class="risk-results">
+
+                <div id="riskResultContainer">
+
+                    <div class="empty-state large">
+
+                        <i data-lucide="shield-alert"
+                           size="34"></i>
+
+                        <h2>No Risk Report Generated</h2>
+
+                        <p>
+                            Select a barangay and generate
+                            a disaster assessment report.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div id="simulationResults"></div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <script src="../ADMIN/admin.js"></script>
+    <script src="riskreport.js"></script>
+
+</body>
+</html>

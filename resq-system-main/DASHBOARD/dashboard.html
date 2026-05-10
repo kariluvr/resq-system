@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="resq-api-base" content="">
+    <title>ResQ Admin | Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div class="scoped-banner">
+        <i data-lucide="lock" size="10"></i> SCOPED VIEW: MUNICIPALITY OF MAMBURAO
+    </div>
+
+    <header class="top-nav">
+        <div class="nav-left">
+            <div class="logo-box">
+                <i data-lucide="shield-alert" size="16"></i>
+            </div>
+
+            <span class="brand">ResQ Admin</span>
+
+            <nav class="nav-links">
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="../REPORTS/reports.html">Reports</a>
+                <a href="../RISKREPORT/riskreport.html">Risk Report</a>
+                <a href="../NEWS/news.html">News</a>
+                <a href="../USERVER/user.html">Users</a>
+                <a href="../SETTINGS/settings.html">Settings</a>
+            </nav>
+        </div>
+
+        <div class="nav-right">
+
+            <button class="btn-workspace" type="button" onclick="location.href='../WORKSPACE/workspace.html'">
+                <i data-lucide="map-pin" size="14"></i>
+                Mamburao
+            </button>
+
+            <button class="icon-btn" type="button" title="Refresh dashboard" onclick="location.reload()">
+                <i data-lucide="refresh-cw" size="16"></i>
+            </button>
+
+            <button class="icon-btn" type="button" data-action="logout" title="Logout">
+                <i data-lucide="log-out" size="16"></i>
+            </button>
+
+            <img src="https://ui-avatars.com/api/?name=Admin&background=FF8C00&color=fff"
+                 alt="Admin avatar"
+                 class="avatar">
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+
+        <div class="dashboard-header">
+            <div class="header-text">
+                <h1>
+                    Active Area: Municipality of Mamburao
+                    <span class="badge-scoped">SCOPED</span>
+                </h1>
+
+                <p>
+                    Real-time emergency monitoring and verification for Mamburao.
+                </p>
+            </div>
+
+            <button class="btn-switch"
+                    onclick="location.href='../WORKSPACE/workspace.html'">
+                <i data-lucide="shuffle" size="14"></i>
+                Switch Workspace
+            </button>
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span>VERIFICATIONS</span>
+                    <i data-lucide="check-circle" class="orange" size="12"></i>
+                </div>
+
+                <div class="stat-value" id="verificationCount">0</div>
+
+                <div class="stat-footer green">
+                    ↗ +12% this week
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span>REPORTS</span>
+                    <i data-lucide="file-text" class="orange" size="12"></i>
+                </div>
+
+                <div class="stat-value" id="reportCount">0</div>
+
+                <div class="stat-footer orange">
+                    0 received reports
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span>HIGH RISKS</span>
+                    <i data-lucide="flag" class="red" size="12"></i>
+                </div>
+
+                <div class="stat-value" id="riskCount">0</div>
+
+                <div class="stat-footer red">
+                    ⚠ 2 critical alerts
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span>RESPONDERS</span>
+                    <i data-lucide="users" class="orange" size="12"></i>
+                </div>
+
+                <div class="stat-value" id="responderCount">0</div>
+
+                <div class="stat-footer muted">
+                    Active in Mamburao
+                </div>
+            </div>
+
+        </div>
+
+        <div class="main-grid">
+
+            <div class="left-col">
+
+                <div class="card map-card">
+
+                    <div class="card-header">
+                        <h3>
+                            <i data-lucide="map" size="14"></i>
+                            Mamburao Incident Map
+                        </h3>
+
+                        <a href="#" class="full-view">
+                            Full View
+                        </a>
+                    </div>
+
+                    <div class="map-container">
+
+                        <div class="map-legend">
+                            <div>
+                                <span class="dot fire"></span>
+                                FIRE (2)
+                            </div>
+
+                            <div>
+                                <span class="dot medical"></span>
+                                MEDICAL (5)
+                            </div>
+
+                            <div>
+                                <span class="dot accident"></span>
+                                ACCIDENT (1)
+                            </div>
+                        </div>
+
+                        <img src="https://i.imgur.com/vHqB5eM.png"
+                             alt="Map"
+                             class="map-img">
+                    </div>
+                </div>
+
+                <div class="card activity-card">
+
+                    <div class="card-header">
+                        <h3>
+                            Filtered Recent Activity (Mamburao)
+                        </h3>
+                    </div>
+
+                    <div class="activity-list">
+
+                        <div class="activity-item">
+
+                            <div class="icon-box red-bg">
+                                <i data-lucide="alert-triangle" size="14"></i>
+                            </div>
+
+                            <div class="activity-details">
+                                <strong>Critical Fire Reported</strong>
+                                <span>Barangay 2, Mamburao - 2 mins ago</span>
+                            </div>
+
+                            <span class="tag red">URGENT</span>
+                        </div>
+
+                        <div class="activity-item">
+
+                            <div class="icon-box green-bg">
+                                <i data-lucide="check" size="14"></i>
+                            </div>
+
+                            <div class="activity-details">
+                                <strong>Emergency Clearance</strong>
+                                <span>Medical emergency resolved - 15 mins ago</span>
+                            </div>
+
+                            <span class="tag green-text">RESOLVED</span>
+                        </div>
+
+                    </div>
+
+                    <button class="btn-ghost-full">
+                        View all activity in Mamburao
+                    </button>
+
+                </div>
+            </div>
+
+            <div class="right-col">
+
+                <div class="card status-card">
+
+                    <h3>
+                        <i data-lucide="users" size="14"></i>
+                        Municipal Status
+                    </h3>
+
+                    <div class="status-meter">
+
+                        <div class="meter-label">
+                            <span>Response Rate</span>
+                            <strong>94%</strong>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div class="fill" style="width: 94%"></div>
+                        </div>
+                    </div>
+
+                    <div class="health-index">
+                        <p>DISTRICT HEALTH INDEX</p>
+
+                        <div class="index-box">
+                            GOOD
+                            <i data-lucide="check-circle" size="16"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card alerts-card">
+
+                    <h3>Latest Announcements</h3>
+
+                    <div id="latestNewsWidget">
+                        <div class="alert-box yellow-bg">
+                            <strong>No announcements loaded</strong>
+                            <p>Publish updates from the News module.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../ADMIN/admin.js"></script>
+    <script src="dashboard.js"></script>
+
+</body>
+</html>

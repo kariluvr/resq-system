@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="resq-api-base" content="">
+    <title>ResQ Admin | Reports</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="reports.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <div class="scoped-banner">
+        <i data-lucide="lock" size="10"></i>
+        SCOPED VIEW: MUNICIPALITY OF MAMBURAO
+    </div>
+
+    <header class="top-nav">
+        <div class="nav-left">
+            <div class="logo-box"><i data-lucide="shield-alert" size="16"></i></div>
+            <span class="brand">ResQ Admin</span>
+            <nav class="nav-links">
+                <a href="../DASHBOARD/dashboard.html">Dashboard</a>
+                <a href="reports.html" class="active">Reports</a>
+                <a href="../RISKREPORT/riskreport.html">Risk Report</a>
+                <a href="../NEWS/news.html">News</a>
+                <a href="../USERVER/user.html">Users</a>
+                <a href="../SETTINGS/settings.html">Settings</a>
+            </nav>
+        </div>
+
+        <div class="nav-right">
+            <button class="btn-workspace" type="button" data-action="workspace">
+                <i data-lucide="map-pin" size="14"></i>
+                Mamburao
+            </button>
+            <button class="icon-btn" type="button" data-action="refresh" title="Refresh reports">
+                <i data-lucide="refresh-cw" size="16"></i>
+            </button>
+            <button class="icon-btn" type="button" data-action="logout" title="Logout">
+                <i data-lucide="log-out" size="16"></i>
+            </button>
+            <img src="https://ui-avatars.com/api/?name=Admin&background=FF8C00&color=fff" alt="Admin avatar" class="avatar">
+        </div>
+    </header>
+
+    <main class="reports-main">
+        <section class="page-header">
+            <div>
+                <h1>Incident Reports</h1>
+                <p>Create, verify, dispatch, and close emergency reports for the Municipality of Mamburao.</p>
+            </div>
+            <div class="header-actions">
+                <div class="search-box">
+                    <i data-lucide="search" size="16"></i>
+                    <input id="reportSearch" type="search" placeholder="Search reports, locations, reporters...">
+                </div>
+                <button class="btn-primary" type="button" data-action="refresh">
+                    <i data-lucide="refresh-cw" size="14"></i>
+                    Refresh
+                </button>
+                <button class="btn-primary" type="button" data-action="open-create">
+                    <i data-lucide="plus" size="14"></i>
+                    New Report
+                </button>
+            </div>
+        </section>
+
+        <section class="summary-grid" aria-label="Report summary">
+            <article class="summary-card">
+                <span>Total Reports</span>
+                <strong id="summaryTotal">0</strong>
+            </article>
+            <article class="summary-card">
+                <span>Received</span>
+                <strong id="summaryReceived">0</strong>
+            </article>
+            <article class="summary-card">
+                <span>Critical</span>
+                <strong id="summaryCritical">0</strong>
+            </article>
+        </section>
+
+        <section class="toolbar" aria-label="Report filters">
+            <select id="typeFilter" aria-label="Filter by incident type">
+                <option value="all">All incident types</option>
+                <option value="FIRE">Fire</option>
+                <option value="FLOOD">Flood</option>
+                <option value="MEDICAL">Medical</option>
+                <option value="ACCIDENT">Accident</option>
+                <option value="LANDSLIDE">Landslide</option>
+                <option value="RESCUE">Rescue</option>
+                <option value="OTHER">Other</option>
+            </select>
+        </section>
+
+        <section class="reports-split-view">
+            <aside class="reports-list" aria-label="Recent reports">
+                <div class="list-heading">
+                    <h2>Recent Reports</h2>
+                    <span id="resultCount">0 found</span>
+                </div>
+                <div class="report-items" aria-live="polite"></div>
+            </aside>
+
+            <section class="report-detail" aria-live="polite">
+                <div class="empty-state">
+                    <i data-lucide="file-search" size="32"></i>
+                    <h2>Select a report</h2>
+                    <p>Choose a report from the list to inspect evidence, location, and moderation actions.</p>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <div class="modal-backdrop hidden" id="reportModal" aria-hidden="true">
+        <section class="modal" role="dialog" aria-modal="true" aria-labelledby="reportModalTitle">
+            <div class="modal-header">
+                <div>
+                    <span class="report-id">MAMBURAO INCIDENT INTAKE</span>
+                    <h2 id="reportModalTitle">New Report</h2>
+                </div>
+                <button class="icon-btn" type="button" data-action="close-create" title="Close">
+                    <i data-lucide="x" size="16"></i>
+                </button>
+            </div>
+            <form id="createReportForm" class="report-form">
+                <div class="form-grid">
+                    <label>Incident title<input name="title" required></label>
+                    <label>Type
+                        <select name="type" required>
+                            <option value="FIRE">Fire</option>
+                            <option value="FLOOD">Flood</option>
+                            <option value="MEDICAL">Medical</option>
+                            <option value="ACCIDENT">Accident</option>
+                            <option value="LANDSLIDE">Landslide</option>
+                            <option value="RESCUE">Rescue</option>
+                            <option value="OTHER">Other</option>
+                        </select>
+                    </label>
+                    <label>Priority
+                        <select name="priority" required>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </label>
+                    <label>Reporter<input name="reporter" required></label>
+                    <label>Mobile<input name="mobile" placeholder="+63"></label>
+                    <label>Location<input name="location" value="Mamburao, Occidental Mindoro" required></label>
+                    <label>Latitude<input name="lat" type="number" step="any" value="13.2233" required></label>
+                    <label>Longitude<input name="lng" type="number" step="any" value="120.5960" required></label>
+                    <label>Assigned unit<input name="assignedTo" value="Mamburao MDRRMO"></label>
+                    <label>Responder<input name="responder" placeholder="Team or vehicle"></label>
+                    <label>ETA minutes<input name="etaMinutes" type="number" min="1" max="240" value="10"></label>
+                    <label>Evidence URL<input name="evidenceUrl" placeholder="https://..."></label>
+                    <label>Evidence file<input name="evidenceFile" type="file" accept="image/png,image/jpeg,image/webp,application/pdf,video/mp4"></label>
+                </div>
+                <label>Description<textarea name="description" rows="4" required></textarea></label>
+                <label>Evidence note<textarea name="evidenceLabel" rows="2" placeholder="Photo, video, caller statement, landmark, or verification detail"></textarea></label>
+                <div class="modal-actions">
+                    <button class="btn-secondary" type="button" data-action="close-create">Cancel</button>
+                    <button class="btn-primary" type="submit"><i data-lucide="send" size="14"></i>Create Report</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="../ADMIN/admin.js"></script>
+    <script src="reports.js"></script>
+</body>
+</html>

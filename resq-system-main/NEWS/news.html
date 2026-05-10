@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="resq-api-base" content="">
+    <title>ResQ Admin | News</title>
+    <link rel="stylesheet" href="news.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="scoped-banner">
+        <i data-lucide="lock" size="10"></i>
+        SCOPED VIEW: MUNICIPALITY OF MAMBURAO
+    </div>
+
+    <header class="top-nav">
+        <div class="nav-left">
+            <div class="logo-box"><i data-lucide="shield-alert" size="16"></i></div>
+            <span class="brand">ResQ Admin</span>
+            <nav class="nav-links">
+                <a href="../DASHBOARD/dashboard.html">Dashboard</a>
+                <a href="../REPORTS/reports.html">Reports</a>
+                <a href="../RISKREPORT/riskreport.html">Risk Report</a>
+                <a href="news.html" class="active">News</a>
+                <a href="../USERVER/user.html">Users</a>
+                <a href="../SETTINGS/settings.html">Settings</a>
+            </nav>
+        </div>
+        <div class="nav-right">
+            <button class="btn-workspace" type="button" onclick="location.href='../WORKSPACE/workspace.html'">
+                <i data-lucide="map-pin" size="14"></i>
+                Mamburao
+            </button>
+            <button class="icon-btn" type="button" data-action="refresh" title="Refresh news">
+                <i data-lucide="refresh-cw" size="16"></i>
+            </button>
+            <button class="icon-btn" type="button" data-action="logout" title="Logout">
+                <i data-lucide="log-out" size="16"></i>
+            </button>
+            <img src="https://ui-avatars.com/api/?name=Admin&background=FF8C00&color=fff" alt="Admin avatar" class="avatar">
+        </div>
+    </header>
+
+    <main class="news-main">
+        <section class="page-header">
+            <div>
+                <h1>News and Announcements</h1>
+                <p>Publish emergency alerts, advisories, weather updates, and community announcements for mobile and web users.</p>
+            </div>
+            <button class="btn-primary" type="button" data-action="new">
+                <i data-lucide="plus" size="14"></i>
+                New Post
+            </button>
+        </section>
+
+        <section class="summary-grid" aria-label="News analytics">
+            <article class="summary-card"><span>Total Posts</span><strong id="totalNews">0</strong></article>
+            <article class="summary-card"><span>Active</span><strong id="activeNews">0</strong></article>
+            <article class="summary-card"><span>Archived</span><strong id="archivedNews">0</strong></article>
+            <article class="summary-card"><span>Total Views</span><strong id="totalViews">0</strong></article>
+        </section>
+
+        <section class="composer card">
+            <div class="card-heading">
+                <div>
+                    <span class="eyebrow" id="formMode">Create Announcement</span>
+                    <h2 id="formTitle">Publish News</h2>
+                </div>
+                <button class="btn-secondary hidden" type="button" data-action="cancel-edit">
+                    <i data-lucide="x" size="14"></i>
+                    Cancel Edit
+                </button>
+            </div>
+            <form id="newsForm" class="news-form">
+                <input type="hidden" name="id">
+                <div class="form-grid">
+                    <label>Title<input name="title" required maxlength="180" placeholder="Emergency evacuation advisory"></label>
+                    <label>Category
+                        <select name="category" required>
+                            <option>Emergency</option>
+                            <option>Weather</option>
+                            <option>Advisory</option>
+                            <option>Missing Person</option>
+                            <option>Disaster Alert</option>
+                            <option selected>General News</option>
+                        </select>
+                    </label>
+                    <label>Priority
+                        <select name="priority" required>
+                            <option>Low</option>
+                            <option>Moderate</option>
+                            <option>High</option>
+                            <option>Emergency</option>
+                        </select>
+                    </label>
+                    <label>Publish Date and Time<input name="publishedAt" type="datetime-local"></label>
+                    <label>Target Audience<input name="targetAudience" value="All residents" maxlength="120"></label>
+                    <label class="check-label"><input name="pinned" type="checkbox"> Pin announcement</label>
+                </div>
+                <label>Message<textarea name="message" rows="5" required maxlength="5000" placeholder="Write the full announcement residents should see..."></textarea></label>
+                <div class="upload-row">
+                    <label>Image Upload<input id="imageInput" name="image" type="file" accept="image/png,image/jpeg,image/webp"></label>
+                    <div class="image-preview" id="imagePreview">
+                        <i data-lucide="image" size="28"></i>
+                        <span>No image selected</span>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn-secondary" type="reset">Clear</button>
+                    <button class="btn-primary" type="submit">
+                        <i data-lucide="send" size="14"></i>
+                        Save Announcement
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="toolbar">
+            <div class="search-box">
+                <i data-lucide="search" size="16"></i>
+                <input id="newsSearch" type="search" placeholder="Search title, message, category...">
+            </div>
+            <select id="categoryFilter" aria-label="Filter by category">
+                <option value="all">All categories</option>
+                <option>Emergency</option>
+                <option>Weather</option>
+                <option>Advisory</option>
+                <option>Missing Person</option>
+                <option>Disaster Alert</option>
+                <option>General News</option>
+            </select>
+        </section>
+
+        <section class="news-layout">
+            <div>
+                <div class="list-heading">
+                    <h2>Announcements</h2>
+                    <span id="resultCount">0 found</span>
+                </div>
+                <div class="news-grid" id="newsGrid" aria-live="polite"></div>
+            </div>
+            <aside class="latest-widget card">
+                <h2>Latest Announcements</h2>
+                <div id="latestList" class="latest-list"></div>
+            </aside>
+        </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="../ADMIN/admin.js"></script>
+    <script src="news.js"></script>
+</body>
+</html>

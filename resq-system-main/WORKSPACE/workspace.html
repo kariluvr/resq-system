@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="resq-api-base" content="">
+    <title>ResQ Admin | Workspace Selection</title>
+    <link rel="stylesheet" href="workspace.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <header class="main-nav">
+        <div class="nav-left">
+            <div class="logo-circle">
+                <i data-lucide="shield-alert" color="white" size="20"></i>
+            </div>
+            <span class="nav-brand">ResQ Admin</span>
+        </div>
+        <div class="nav-right">
+            <button class="btn-filter" type="button" data-action="logout">
+                <i data-lucide="log-out"></i> Logout
+            </button>
+            <div class="user-info">
+                <div class="user-text">
+                    <span class="user-name">Chief Administrator</span>
+                    <span class="user-role">Regional Office</span>
+                </div>
+                <img src="https://ui-avatars.com/api/?name=Chief+Admin&background=FF8C00&color=fff" alt="User" class="avatar">
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>Workspace Selection</h1>
+            <p>Select a Mamburao operating area to access the management dashboard, view real-time reports, and dispatch alerts.</p>
+        </section>
+
+        <div class="filter-bar">
+            <div class="search-box">
+                <i data-lucide="search"></i>
+                <input type="text" placeholder="Select or type a name...">
+                <i data-lucide="chevron-down" class="chevron"></i>
+            </div>
+            <button class="btn-filter">
+                <i data-lucide="list-filter"></i> Filter View
+            </button>
+        </div>
+
+        <div class="workspace-grid">
+            <div class="barangay-card">
+                <div class="card-image img-poblacion">
+                    <span class="status-badge status-operational">STATUS: OPERATIONAL</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-header-inner">
+                        <div>
+                            <h3>Municipality of Mamburao</h3>
+                            <p class="district">Municipal Operations Center</p>
+                        </div>
+                        <div class="loc-icon"><i data-lucide="map-pin"></i></div>
+                    </div>
+                    <div class="stats-row">
+                        <div class="stat-box"><strong>12</strong><span>Pending Ver.</span></div>
+                        <div class="stat-box"><strong>5</strong><span>Reports</span></div>
+                        <div class="stat-box alert-orange"><strong>2</strong><span>Active Alerts</span></div>
+                    </div>
+                    <button class="btn-enter" onclick="location.href='../DASHBOARD/dashboard.html'">Enter Workspace <i data-lucide="arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div class="barangay-card">
+                <div class="card-image img-sanjose">
+                    <span class="status-badge status-operational">STATUS: OPERATIONAL</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-header-inner">
+                        <div>
+                            <h3>Barangay Tayamaan</h3>
+                            <p class="district">Mamburao Operating Area</p>
+                        </div>
+                        <div class="loc-icon"><i data-lucide="home"></i></div>
+                    </div>
+                    <div class="stats-row">
+                        <div class="stat-box"><strong>8</strong><span>Pending Ver.</span></div>
+                        <div class="stat-box"><strong>3</strong><span>Reports</span></div>
+                        <div class="stat-box"><strong>0</strong><span>Active Alerts</span></div>
+                    </div>
+                    <button class="btn-enter" onclick="location.href='../DASHBOARD/dashboard.html'">Enter Workspace <i data-lucide="arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div class="barangay-card">
+                <div class="card-image img-stmaria">
+                    <span class="status-badge status-limited">STATUS: LIMITED ACCESS</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-header-inner">
+                        <div>
+                            <h3>Barangay Payompon</h3>
+                            <p class="district">Mamburao Operating Area</p>
+                        </div>
+                        <div class="loc-icon"><i data-lucide="mountain"></i></div>
+                    </div>
+                    <div class="stats-row">
+                        <div class="stat-box"><strong>21</strong><span>Pending Ver.</span></div>
+                        <div class="stat-box"><strong>14</strong><span>Reports</span></div>
+                        <div class="stat-box alert-red"><strong>4</strong><span>Active Alerts</span></div>
+                    </div>
+                    <button class="btn-enter" onclick="location.href='../DASHBOARD/dashboard.html'">Enter Workspace <i data-lucide="arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div class="onboard-card">
+                <div class="onboard-icon"><i data-lucide="building-2"></i></div>
+                <h3>Onboard New Mamburao Area</h3>
+                <p>Register a new administrative boundary to the ResQ system.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="system-footer">
+        <div class="footer-left">
+            <span class="footer-stat"><i data-lucide="check-circle"></i> 15 Mamburao Barangays</span>
+            <span class="footer-stat"><i data-lucide="radio"></i> 128 Active Personnel</span>
+        </div>
+        <div class="footer-right">
+            ResQ v1.0.0 - 2026 Ctrl Alt Defend Inc.
+        </div>
+    </footer>
+
+    <script src="../ADMIN/admin.js"></script>
+    <script src="workspace.js"></script>
+</body>
+</html>

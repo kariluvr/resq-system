@@ -1,0 +1,419 @@
+{
+  "admins": [
+    {
+      "id": 1,
+      "email": "admin@resq.com",
+      "username": "admin",
+      "name": "Admin User",
+      "password": "$2b$10$JJhT5cVzmmccTPjkAZyYZOE.zew1D2NdTNvUgrOtv1pFEYBdsEyZC",
+      "role": "admin"
+    }
+  ],
+  "residents": [
+    {
+      "id": 1,
+      "fullName": "Juan Dela Cruz",
+      "mobile": "+63 917 123 4567",
+      "submittedId": "Barangay ID",
+      "registeredAt": "2026-04-21T09:20:00+08:00",
+      "status": "approved",
+      "address": "Barangay 2, Mamburao, Occidental Mindoro",
+      "decisions": [
+        {
+          "status": "approved",
+          "note": "Documents verified.",
+          "at": "2026-04-21T10:00:00+08:00",
+          "by": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "fullName": "Maria Santos",
+      "mobile": "+63 918 987 6543",
+      "submittedId": "National ID",
+      "registeredAt": "2026-04-25T14:40:00+08:00",
+      "status": "pending",
+      "address": "Barangay Tayamaan, Mamburao, Occidental Mindoro",
+      "decisions": []
+    },
+    {
+      "id": 3,
+      "fullName": "Ricardo Gomez",
+      "mobile": "+63 919 555 0123",
+      "submittedId": "Driver's License",
+      "registeredAt": "2026-04-22T11:15:00+08:00",
+      "status": "rejected",
+      "address": "Barangay Payompon, Mamburao, Occidental Mindoro",
+      "decisions": [
+        {
+          "status": "rejected",
+          "note": "Document photo was unreadable.",
+          "at": "2026-04-22T12:30:00+08:00",
+          "by": "Admin User"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "fullName": "Elena Bautista",
+      "mobile": "+63 920 778 3314",
+      "submittedId": "Voter's ID",
+      "registeredAt": "2026-04-26T08:05:00+08:00",
+      "status": "pending",
+      "address": "Barangay 7, Mamburao, Occidental Mindoro",
+      "decisions": []
+    }
+  ],
+  "reports": [
+    {
+      "id": 1,
+      "type": "FIRE",
+      "title": "Kitchen fire near public market",
+      "status": "received",
+      "priority": "critical",
+      "reporter": "Ana Reyes",
+      "mobile": "+63 917 204 8101",
+      "location": "Barangay 2, Mamburao, Occidental Mindoro",
+      "coordinates": {
+        "lat": 13.2247,
+        "lng": 120.5969
+      },
+      "submittedAt": "2026-04-27T12:10:00+08:00",
+      "description": "Smoke visible from the second floor of a residential building. Nearby households have been asked to keep distance.",
+      "evidence": [
+        {
+          "kind": "note",
+          "label": "Resident photo and location pin received",
+          "url": ""
+        }
+      ],
+      "assignedTo": "Mamburao Fire Station",
+      "notes": [],
+      "history": [
+        {
+          "status": "received",
+          "note": "Report received.",
+          "at": "2026-04-27T12:10:00+08:00",
+          "by": "System"
+        }
+      ],
+      "dispatch": {
+        "unit": "Mamburao Fire Station",
+        "responder": "Duty crew",
+        "etaMinutes": 8,
+        "lastUpdatedAt": "2026-04-27T12:10:00+08:00"
+      }
+    },
+    {
+      "id": 2,
+      "type": "FLOOD",
+      "title": "Street flooding after heavy rain",
+      "status": "received",
+      "priority": "high",
+      "reporter": "Mark Villanueva",
+      "mobile": "+63 918 322 1440",
+      "location": "Barangay Tayamaan, Mamburao, Occidental Mindoro",
+      "coordinates": {
+        "lat": 13.2368,
+        "lng": 120.6067
+      },
+      "submittedAt": "2026-04-27T11:42:00+08:00",
+      "description": "Water is rising above the gutter line and slowing vehicle movement near the elementary school.",
+      "evidence": [
+        {
+          "kind": "note",
+          "label": "Two photos and water-level note received",
+          "url": ""
+        }
+      ],
+      "assignedTo": "Mamburao MDRRMO",
+      "notes": [],
+      "history": [
+        {
+          "status": "received",
+          "note": "Report received.",
+          "at": "2026-04-27T11:42:00+08:00",
+          "by": "System"
+        }
+      ],
+      "dispatch": {
+        "unit": "Mamburao MDRRMO",
+        "responder": "Flood response team",
+        "etaMinutes": 12,
+        "lastUpdatedAt": "2026-04-27T11:42:00+08:00"
+      }
+    },
+    {
+      "id": 3,
+      "type": "MEDICAL",
+      "title": "Senior resident needs medical assistance",
+      "status": "verified",
+      "priority": "high",
+      "reporter": "Liza Ramos",
+      "mobile": "+63 919 502 7782",
+      "location": "Barangay Payompon, Mamburao, Occidental Mindoro",
+      "coordinates": {
+        "lat": 13.2089,
+        "lng": 120.5796
+      },
+      "submittedAt": "2026-04-27T10:05:00+08:00",
+      "description": "Resident reported chest discomfort and dizziness. Family requested ambulance support.",
+      "evidence": [
+        {
+          "kind": "note",
+          "label": "Verified phone call with household",
+          "url": ""
+        }
+      ],
+      "assignedTo": "Mamburao Municipal Health Office",
+      "notes": [
+        {
+          "text": "Household was reached by phone.",
+          "at": "2026-04-27T10:15:00+08:00",
+          "by": "Admin User"
+        }
+      ],
+      "history": [
+        {
+          "status": "received",
+          "note": "Report received.",
+          "at": "2026-04-27T10:05:00+08:00",
+          "by": "System"
+        },
+        {
+          "status": "verified",
+          "note": "Verified by phone.",
+          "at": "2026-04-27T10:15:00+08:00",
+          "by": "Admin User"
+        }
+      ],
+      "dispatch": {
+        "unit": "Mamburao Municipal Health Office",
+        "responder": "Ambulance 1",
+        "etaMinutes": 10,
+        "lastUpdatedAt": "2026-04-27T10:15:00+08:00"
+      }
+    },
+    {
+      "id": 4,
+      "type": "ACCIDENT",
+      "title": "Motorcycle collision blocking lane",
+      "status": "received",
+      "priority": "medium",
+      "reporter": "Carlos Mendoza",
+      "mobile": "+63 920 115 9091",
+      "location": "Barangay 7, Mamburao, Occidental Mindoro",
+      "coordinates": {
+        "lat": 13.2214,
+        "lng": 120.5908
+      },
+      "submittedAt": "2026-04-27T09:38:00+08:00",
+      "description": "Minor collision with one injured rider. Traffic flow is affected in one lane.",
+      "evidence": [
+        {
+          "kind": "note",
+          "label": "Witness report received",
+          "url": ""
+        }
+      ],
+      "assignedTo": "Mamburao Traffic Assistance Desk",
+      "notes": [],
+      "history": [
+        {
+          "status": "received",
+          "note": "Report received.",
+          "at": "2026-04-27T09:38:00+08:00",
+          "by": "System"
+        }
+      ],
+      "dispatch": {
+        "unit": "Mamburao Traffic Assistance Desk",
+        "responder": "Traffic desk",
+        "etaMinutes": 15,
+        "lastUpdatedAt": "2026-04-27T09:38:00+08:00"
+      }
+    }
+  ],
+  "barangays": [
+    {
+      "id": 1,
+      "name": "Balansay",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    },
+    {
+      "id": 2,
+      "name": "Barangay 1",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    },
+    {
+      "id": 3,
+      "name": "Barangay 2",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    },
+    {
+      "id": 4,
+      "name": "Barangay 3",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    },
+    {
+      "id": 5,
+      "name": "Barangay 4",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    },
+    {
+      "id": 6,
+      "name": "Barangay 5",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    },
+    {
+      "id": 7,
+      "name": "Barangay 6",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    },
+    {
+      "id": 8,
+      "name": "Barangay 7",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    },
+    {
+      "id": 9,
+      "name": "Barangay 8",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    },
+    {
+      "id": 10,
+      "name": "Fatima",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    },
+    {
+      "id": 11,
+      "name": "Payompon",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    },
+    {
+      "id": 12,
+      "name": "San Luis",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    },
+    {
+      "id": 13,
+      "name": "Talabaan",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    },
+    {
+      "id": 14,
+      "name": "Tangkalan",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    },
+    {
+      "id": 15,
+      "name": "Tayamaan",
+      "district": "Municipality of Mamburao",
+      "status": "active",
+      "residents": 0
+    }
+  ],
+  "settings": {
+    "moderation": {
+      "keywords": [
+        "Spam",
+        "Profanity",
+        "Fake report"
+      ],
+      "threshold": 5
+    },
+    "reasons": {
+      "approval": [
+        "Documentation Verified",
+        "Standard Eligibility Met",
+        "Emergency Priority Confirmed"
+      ],
+      "rejection": [
+        "Unreadable document",
+        "Address outside selected barangay",
+        "Duplicate registration"
+      ]
+    }
+  },
+  "auditLog": [
+    {
+      "id": 1777273396854,
+      "action": "login",
+      "target": "admin",
+      "details": {
+        "email": "admin@resq.com"
+      },
+      "at": "2026-04-27T07:03:16.854Z",
+      "by": "Admin User"
+    },
+    {
+      "id": 1777273350307,
+      "action": "login",
+      "target": "admin",
+      "details": {
+        "email": "admin@resq.com"
+      },
+      "at": "2026-04-27T07:02:30.307Z",
+      "by": "Admin User"
+    },
+    {
+      "id": 1777273323492,
+      "action": "login",
+      "target": "admin",
+      "details": {
+        "email": "admin@resq.com"
+      },
+      "at": "2026-04-27T07:02:03.493Z",
+      "by": "Admin User"
+    },
+    {
+      "id": 1777271897673,
+      "action": "login",
+      "target": "admin",
+      "details": {
+        "email": "admin@resq.com"
+      },
+      "at": "2026-04-27T06:38:17.673Z",
+      "by": "Admin User"
+    },
+    {
+      "id": 1777271688492,
+      "action": "login",
+      "target": "admin",
+      "details": {
+        "email": "admin@resq.com"
+      },
+      "at": "2026-04-27T06:34:48.492Z",
+      "by": "Admin User"
+    }
+  ]
+}

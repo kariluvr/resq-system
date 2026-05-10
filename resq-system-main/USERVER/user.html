@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="resq-api-base" content="">
+    <title>ResQ Admin | Users</title>
+    <link rel="stylesheet" href="user.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="scoped-banner">
+        <i data-lucide="lock" size="10"></i>
+        SCOPED VIEW: MUNICIPALITY OF MAMBURAO
+    </div>
+
+    <header class="top-nav">
+        <div class="nav-left">
+            <div class="logo-box"><i data-lucide="shield-alert" size="16"></i></div>
+            <span class="brand">ResQ Admin</span>
+            <nav class="nav-links">
+                <a href="../DASHBOARD/dashboard.html">Dashboard</a>
+                <a href="../REPORTS/reports.html">Reports</a>
+                <a href="../RISKREPORT/riskreport.html">Risk Report</a>
+                <a href="../NEWS/news.html">News</a>
+                <a href="user.html" class="active">Users</a>
+                <a href="../SETTINGS/settings.html">Settings</a>
+            </nav>
+        </div>
+        <div class="nav-right">
+            <button class="btn-workspace" type="button" data-action="workspace">
+                <i data-lucide="map-pin" size="14"></i>
+                Mamburao
+            </button>
+            <button class="icon-btn" type="button" data-action="refresh" title="Refresh users">
+                <i data-lucide="refresh-cw" size="16"></i>
+            </button>
+            <button class="icon-btn" type="button" data-action="logout" title="Logout">
+                <i data-lucide="log-out" size="16"></i>
+            </button>
+            <img src="https://ui-avatars.com/api/?name=Admin&background=FF8C00&color=fff" alt="Admin avatar" class="avatar">
+        </div>
+    </header>
+
+    <main class="user-container">
+        <section class="page-header">
+            <div class="header-text">
+                <h1>User Verification</h1>
+                <p>Review resident identity submissions for the Municipality of Mamburao.</p>
+            </div>
+            <div class="header-actions">
+                <div class="search-box">
+                    <i data-lucide="search" size="16"></i>
+                    <input id="userSearch" type="search" placeholder="Search name, mobile, address...">
+                </div>
+                <select id="statusFilter" aria-label="Filter by status">
+                    <option value="all">All statuses</option>
+                    <option value="pending">Pending</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                </select>
+                <button class="btn-primary" type="button" data-action="refresh">
+                    <i data-lucide="refresh-cw" size="14"></i>
+                    Refresh
+                </button>
+            </div>
+        </section>
+
+        <section class="summary-grid" aria-label="User verification summary">
+            <article class="summary-card">
+                <span>Total Residents</span>
+                <strong id="totalUsers">0</strong>
+            </article>
+            <article class="summary-card">
+                <span>Pending</span>
+                <strong id="pendingUsers">0</strong>
+            </article>
+            <article class="summary-card">
+                <span>Approved</span>
+                <strong id="approvedUsers">0</strong>
+            </article>
+            <article class="summary-card">
+                <span>Rejected</span>
+                <strong id="rejectedUsers">0</strong>
+            </article>
+        </section>
+
+        <section class="card table-card">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Mobile Number</th>
+                            <th>Submitted ID</th>
+                            <th>Date Registered</th>
+                            <th>Status</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTable"></tbody>
+                </table>
+            </div>
+            <div class="table-footer">
+                <span id="tableCount">Showing 0 users</span>
+                <div class="pagination">
+                    <button class="pag-btn" type="button" data-page="prev" title="Previous page">
+                        <i data-lucide="chevron-left" size="14"></i>
+                    </button>
+                    <button class="pag-btn active" type="button">1</button>
+                    <button class="pag-btn" type="button" data-page="next" title="Next page">
+                        <i data-lucide="chevron-right" size="14"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <dialog class="modal" id="idModal">
+        <div class="modal-header">
+            <h2 id="modalTitle">Submitted ID</h2>
+            <button class="icon-btn" type="button" data-action="close-modal" title="Close">
+                <i data-lucide="x" size="16"></i>
+            </button>
+        </div>
+        <div class="id-preview">
+            <i data-lucide="contact-2" size="42"></i>
+            <strong id="modalIdType">Resident ID</strong>
+            <span id="modalResident">Resident name</span>
+            <small id="modalAddress">Address</small>
+            <div class="decision-history" id="modalDecisions"></div>
+        </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="../ADMIN/admin.js"></script>
+    <script src="user.js"></script>
+</body>
+</html>

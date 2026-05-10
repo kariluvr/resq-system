@@ -1,0 +1,37 @@
+/* Styling the input field */
+.input-wrapper {
+    position: relative;
+    display: flex; /* Helps vertically center the icon */
+    align-items: center;
+}
+
+/* Base styling for the icon elements */
+.input-wrapper i {
+    position: absolute;
+    left: 12px; /* Fixed distance from the left edge of the input */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Precise vertical adjustment */
+    
+    /* icon size and color */
+    width: 18px; 
+    height: 18px;
+    color: var(--text-muted); /* Use the muted text color from the dashboard */
+    
+    pointer-events: none; /* The username/lock icons are not clickable */
+}
+
+/* clickable password toggle icon */
+.eye-icon {
+    left: auto !important; /* Disables the default left alignment */
+    right: 12px; /* Aligns to the right instead */
+    cursor: pointer; /* Changes the cursor to a hand on hover */
+    pointer-events: auto !important; /* Re-enables clicking */
+}
+
+/* icons used inside the bottom outline buttons */
+.btn-outline i {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px; /* Space between the icon and the text */
+    color: var(--text-muted);
+}

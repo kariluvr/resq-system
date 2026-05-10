@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="resq-api-base" content="">
+    <title>ResQ Admin | Settings</title>
+    <link rel="stylesheet" href="settings.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="scoped-banner">
+        <i data-lucide="lock" size="10"></i>
+        SCOPED VIEW: MUNICIPALITY OF MAMBURAO
+    </div>
+
+    <header class="top-nav">
+        <div class="nav-left">
+            <div class="logo-box"><i data-lucide="shield-alert" size="16"></i></div>
+            <span class="brand">ResQ Admin</span>
+            <nav class="nav-links">
+                <a href="../DASHBOARD/dashboard.html">Dashboard</a>
+                <a href="../REPORTS/reports.html">Reports</a>
+                <a href="../RISKREPORT/riskreport.html">Risk Report</a>
+                <a href="../NEWS/news.html">News</a>
+                <a href="../USERVER/user.html">Users</a>
+                <a href="settings.html" class="active">Settings</a>
+            </nav>
+        </div>
+        <div class="nav-right">
+            <button class="btn-workspace" type="button" data-action="workspace">
+                <i data-lucide="map-pin" size="14"></i>
+                Mamburao
+            </button>
+            <button class="icon-btn" type="button" data-action="refresh" title="Refresh settings">
+                <i data-lucide="refresh-cw" size="16"></i>
+            </button>
+            <button class="icon-btn" type="button" data-action="logout" title="Logout">
+                <i data-lucide="log-out" size="16"></i>
+            </button>
+            <img src="https://ui-avatars.com/api/?name=Admin&background=FF8C00&color=fff" alt="Admin avatar" class="avatar">
+        </div>
+    </header>
+
+    <main class="settings-container">
+        <section class="page-header">
+            <div>
+                <h1>System Settings</h1>
+                <p>Configure workspace units, moderation rules, and admin feedback reasons.</p>
+            </div>
+            <div class="header-actions">
+                <div class="search-box">
+                    <i data-lucide="search" size="16"></i>
+                    <input id="settingsSearch" type="search" placeholder="Search settings...">
+                </div>
+                <button class="btn-primary" type="button" data-action="refresh">
+                    <i data-lucide="refresh-cw" size="14"></i>
+                    Refresh
+                </button>
+            </div>
+        </section>
+
+        <section class="settings-card" data-section="barangay">
+            <div class="card-header">
+                <div class="header-info">
+                    <h2>Barangay Management</h2>
+                    <p>Add operating units and toggle whether a barangay is active or offline.</p>
+                </div>
+                <button class="btn-primary" type="button" data-action="add-barangay">
+                    <i data-lucide="plus" size="16"></i>
+                    Add Barangay
+                </button>
+            </div>
+            <div class="barangay-grid" id="barangayGrid"></div>
+        </section>
+
+        <section class="settings-card" data-section="moderation">
+            <div class="card-header">
+                <div class="header-info">
+                    <h2>Moderation Rules</h2>
+                    <p>Keep noisy or abusive reports out of emergency workflows.</p>
+                </div>
+            </div>
+            <div class="rules-grid">
+                <div class="rule-group">
+                    <label>Banned Keywords</label>
+                    <div class="keyword-tags" id="keywordTags"></div>
+                    <div class="inline-form">
+                        <input id="keywordInput" type="text" placeholder="Add keyword">
+                        <button class="btn-secondary" type="button" data-action="add-keyword">Add</button>
+                    </div>
+                </div>
+                <div class="rule-group">
+                    <label for="thresholdSlider">Auto-flag Threshold</label>
+                    <div class="slider-container">
+                        <input id="thresholdSlider" type="range" min="1" max="10" value="5" class="slider">
+                        <span class="threshold-value" id="thresholdValue">5 Reports</span>
+                    </div>
+                    <p class="helper-text">Reports above this count are highlighted for admin review.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="settings-card" data-section="reasons">
+            <div class="card-header">
+                <div class="header-info">
+                    <h2>Status Feedback Reasons</h2>
+                    <p>Manage reusable reasons for resident approvals and rejections.</p>
+                </div>
+                <button class="btn-secondary" type="button" data-action="add-reason">
+                    <i data-lucide="plus" size="14"></i>
+                    Add Reason
+                </button>
+            </div>
+            <div class="reasons-grid">
+                <div class="reason-section">
+                    <span class="label-badge green">Approval Reasons</span>
+                    <ul id="approvalReasons"></ul>
+                </div>
+                <div class="reason-section">
+                    <span class="label-badge red">Rejection Reasons</span>
+                    <ul id="rejectionReasons"></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="../ADMIN/admin.js"></script>
+    <script src="settings.js"></script>
+</body>
+</html>

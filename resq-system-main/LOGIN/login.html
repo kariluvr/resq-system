@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="resq-api-base" content="">
+    <title>ResQ Admin | Login</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        
+        :root {
+            --primary: #FF8C00;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --bg-light: #F8FAFC;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-main);
+        }
+
+        .login-wrapper { width: 100%; max-width: 420px; padding: 20px; }
+
+        .login-card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .card-header { background-color: #FFF5E9; padding: 40px 20px; text-align: center; }
+
+        .logo-box {
+            background: var(--primary);
+            width: 54px;
+            height: 54px;
+            margin: 0 auto 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .card-header h1 { margin: 0; font-size: 1.5rem; letter-spacing: -0.5px; }
+        .card-header p { margin: 5px 0 0; color: var(--text-muted); font-size: 0.85rem; }
+
+        .card-body { padding: 40px; }
+        .card-body h2 { margin: 0 0 5px; font-size: 1.25rem; }
+        .subtitle { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px; }
+
+        .input-group { margin-bottom: 20px; }
+        .label-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        label { font-size: 0.85rem; font-weight: 600; color: #374151; }
+
+        .input-wrapper { position: relative; display: flex; align-items: center; }
+        .input-wrapper input {
+            width: 100%;
+            padding: 12px 12px 12px 40px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #F9FAFB;
+            transition: border 0.2s;
+        }
+        .input-wrapper input:focus { outline: none; border-color: var(--primary); background: var(--white); }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 12px;
+            width: 18px;
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .eye-icon { left: auto !important; right: 12px; cursor: pointer; pointer-events: auto !important; }
+
+        .checkbox-group { display: flex; align-items: center; gap: 8px; margin-bottom: 25px; font-size: 0.9rem; color: var(--text-muted); }
+
+        .btn-primary {
+            width: 100%;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .btn-primary:hover { opacity: 0.9; }
+
+        .card-footer {
+            padding: 20px;
+            background: #F9FAFB;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .secure-text { font-weight: 800; color: #4B5563; margin-bottom: 8px; letter-spacing: 1px; }
+
+        .bottom-actions { display: flex; justify-content: center; gap: 12px; }
+        .btn-outline {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: #4B5563;
+        }
+
+        .login-feedback {
+            background: #FEF2F2;
+            color: #991B1B;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-align: center;
+            border: 1px solid #FEE2E2;
+        }
+        .hidden { display: none; }
+        .forgot-link { color: var(--primary); text-decoration: none; font-size: 13px; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <div class="login-wrapper">
+        <div class="login-card">
+            <div class="card-header">
+                <div class="brand-container">
+                    <div class="logo-box">
+                        <i data-lucide="shield-alert" stroke-width="2.5" size="32"></i>
+                    </div>
+                    <h1>ResQ Admin</h1>
+                    <p>Emergency Management Dashboard</p>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <h2>Admin Login</h2>
+                <p class="subtitle">Please enter your credentials to access the console.</p>
+
+                <div id="loginMessage" class="login-feedback hidden">Invalid credentials. Please try again.</div>
+
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label>Email or Username</label>
+                        <div class="input-wrapper">
+                            <i data-lucide="user"></i>
+                            <input type="text" id="username" placeholder="Username or email" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="label-row">
+                            <label>Password</label>
+                            <a href="#" class="forgot-link">Forgot password?</a>
+                        </div>
+                        <div class="input-wrapper">
+                            <i data-lucide="lock"></i>
+                            <input type="password" id="password" placeholder="••••••••" required>
+                            <i data-lucide="eye" class="eye-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="stay-logged">
+                        <label for="stay-logged">Stay logged in for 30 days</label>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Sign In to Dashboard</button>
+                </form>
+            </div>
+
+            <div class="card-footer">
+                <p class="secure-text">FEU TECH • CTRL ALT DEFEND</p>
+                <p class="legal-text">Authorized access only. All activities are monitored and logged for security purposes.</p>
+                <p class="copyright">© 2026 ResQ Inc.</p>
+            </div>
+        </div>
+
+    <script src="../ADMIN/admin.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>
